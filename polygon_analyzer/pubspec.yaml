@@ -10,7 +10,12 @@ environment:
 dependencies:
   turf: ^0.0.9
   # path: ^1.8.0
+  json_annotation: any
+  yaml: ^3.1.2
+  polybool: ^0.2.0
 
 dev_dependencies:
+  build_runner: ^2.4.8
   lints: ^2.1.0
   test: ^1.24.0
+  json_serializable: ^6.7.1
