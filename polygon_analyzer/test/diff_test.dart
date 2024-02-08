@@ -95,7 +95,7 @@ main() {
         .toList();
     final first = polygons.first.geometry as Polygon;
     final second = polygons.last.geometry as Polygon;
-    final diffed = diff(
+    final diffed = polyDiff(
       first,
       FeatureCollection(
         features: [Feature(geometry: second)],

@@ -55,6 +55,10 @@ def osm_query(items: list[str], area):
     area_id = get_area_id(area)
     return exec_query(area_id, gen_query(items))
 
+def osm_base_query(area):
+    area_id = get_area_id(area)
+    return exec_base_query(area_id)
+
 
 def write_output_geojson(geo_json, filename):
     with open(filename, "w") as of:

@@ -18,7 +18,7 @@ Map<String, dynamic> _$ConfigLayerToJson(ConfigLayer instance) =>
     };
 
 const _$OperationEnumMap = {
-  Operation.remove: 'remove',
+  Operation.difference: 'difference',
   Operation.union: 'union',
 };
 

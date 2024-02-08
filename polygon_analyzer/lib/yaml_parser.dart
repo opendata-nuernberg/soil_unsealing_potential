@@ -1,9 +1,10 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:yaml/yaml.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'yaml_parser.g.dart';
 
-enum Operation { remove, union }
+enum Operation { difference, union }
 
 @JsonSerializable()
 class ConfigLayer {
@@ -33,6 +34,8 @@ class UnsealingConfig {
 
 UnsealingConfig parseConfig(String filename) {
   final fileContent = File(filename).readAsStringSync();
-  final yamlMap = loadYaml(fileContent);
+  final yamlMap = jsonDecode(jsonEncode(loadYaml(fileContent) as YamlMap))
+      as Map<String, dynamic>;
+
   return UnsealingConfig.fromJson(yamlMap);
 }

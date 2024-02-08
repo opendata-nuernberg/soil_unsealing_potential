@@ -6,7 +6,7 @@ from pydantic_yaml import parse_yaml_file_as
 from rich.pretty import pprint
 
 class Operation(str, Enum):
-    remove = "remove"
+    difference = "difference"
     union = "union"
 
 class ConfigLayer(BaseModel):
