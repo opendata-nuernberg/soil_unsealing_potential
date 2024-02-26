@@ -1,9 +1,5 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:polygon_analyzer/load_geojson.dart';
 import 'package:polygon_analyzer/operations.dart';
-import 'package:polygon_analyzer/turf/bool.dart';
 import 'package:polygon_analyzer/yaml_parser.dart';
 import 'package:turf/turf.dart';
 
@@ -20,7 +16,7 @@ void main(List<String> arguments) {
   GeometryObject result = basePoly!;
 
   print('loading base layer');
-  final baseArea = area(basePoly);
+  final baseArea = area(basePoly)!.abs();
   print('base area: $baseArea (100%)');
   print('---');
 
@@ -34,8 +30,8 @@ void main(List<String> arguments) {
       case Operation.union:
         result = unionOperation(result, layersColl);
     }
-    final resultingArea = area(result);
-    final resultingPercentage = (resultingArea! / baseArea!) * 100;
+    final resultingArea = area(result)!.abs();
+    final resultingPercentage = (resultingArea / baseArea) * 100;
 
     print('resulting area: $resultingArea ($resultingPercentage%)');
     print('---');
